@@ -1,0 +1,69 @@
+(*
+Numero al que tiende el crecimiento de tiempo de fib
+
+//CALCULAR TIEMPO QUE TARDARA EN EJECUTARSE FIB
+# let k = (1. +. sqrt 5.) /. 2.;;
+val k : float = 1.6180339887498949   
+
+
+Podemos medir el tiempo  de ejecucuion:
+(NO ES UNA VERDADERA FUNCION)*********
+Lo que el SO dice que lleva cnsumido la maquina virtual de ocaml.
+(DESDE QUE SE EJECUTA LA PRIMERA FUNCION) 
+
+
+# Sys.time;;
+- : unit -> float = <fun>
+
+Y SE APLICA A ()
+
+# Sys.time ();;
+- : float = 27.93729
+
+*)
+
+
+SE RESTA EL ULTIMO TIEMPO AL QE GUARDAMOS ANTES
+
+# let t1 = Sys.time ();;
+val t1 : float = 27.937764
+# fib 32;;
+- : int = 2178309
+# Sys.time () -. t1;;
+- : float = 0.0747549999999996828   //tiempo de ejec de fib 32
+
+
+FUNCION PARA CRONOMETRAR UNA FUNCION QUE PASAMOS (f)
+
+let crono f x = 
+	let t1 = Sys.time () in
+	f x; Sys.time () -. t1
+
+	
+//** f x; Sys.time () -. t1 (Se ejecuta f x (Se ignora el resultado); y luego Sys.time () -. t1
+SE PUEDE ESCRIBIR TAMBIEN = let _ = f x in Sys.time () -. t1
+
+
+
+
+
+let rec fib2 = function
+	1 -> 1, 0
+	| n -> let f1, f2 = fib2 (n-1) in 
+		f1 + f2, f1 ;;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
