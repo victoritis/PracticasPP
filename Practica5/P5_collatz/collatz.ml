@@ -12,9 +12,9 @@ let rec orbit n =
 	
 
 
-let rec lenght n =
+let rec length n =
 	if n = 1 then 0
-	else lenght(f n) + 1
+	else length(f n) + 1
 
 
 let rec top n = 
@@ -29,11 +29,11 @@ let rec length'n'top n =
 	
 	
 let rec longest_in n m =
-	if n = m then n, lenght n
+	if n = m then n, length n
 	else 
 	let x, y = longest_in (n + 1) m in
-	let lenght_n = lenght n in
-	if lenght_n >= y then n, lenght_n
+	let length_n = length n in
+	if length_n >= y then n, length_n
 		else x, y
 	
 
